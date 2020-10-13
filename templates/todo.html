@@ -1,0 +1,67 @@
+{% extends  'basic.html' %}
+{% block body%}
+<!--to add items to todolist-->
+<div class="container my-5 pt-5">
+    <form action="/todo" method="get">
+        <label><h5>TASK</h5></label>
+        <input type="textarea" class="form-control w-100" name="task" >
+
+        <div class="row pt-3">
+            <div class="col-3">
+                <label><h5>Date</h5></label><br>
+                <input type="date" class="form-control" name="date1" >
+            </div>
+            <div class="col-3">
+                  <label><h5>Label</h5></label>
+                        <select class="form-control " name="label" >
+                            <option>Personal</option>
+                            <option>Work</option>
+                            <option>Shopping</option>
+                            <option>Other</option>
+                        </select>
+            </div>
+            <div class="col-3">
+                 <label><h5>Status</h5></label>
+                    <select class="form-control  "  name="status" >
+                        <option>New</option>
+                        <option>In-Progress</option>
+                        <option>Completed</option>
+                    </select>
+
+            </div>
+            <div class="col-3">
+                 <label><h5>Priority</h5></label>
+                    <select class="form-control  "  name="priority" >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+
+                    </select>
+
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-dark  m-2" value="Add">
+    </form>
+    <br><br>
+    <h4>Recently Added...</h4>
+<ul class="list-group">
+      {% for i in allData %}
+  <li class="list-group-item">
+
+      <span>{{i.task}}
+
+              <div class="float-right"><form action="/todo_delete/{{ i.task_id }}/" method="post">{% csrf_token %} <button  class="btn btn-danger" id="delete">Complete</button></form></div>
+
+          </span>
+
+  </li>
+    {% endfor %}
+</ul>
+
+
+
+</div>
+{% endblock%}

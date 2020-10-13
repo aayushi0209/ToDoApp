@@ -1,0 +1,40 @@
+<!--basic view for todo.html and  home.html page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+<header>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top shadow p-3 mb-5 bg-dark">
+		<div class="container">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">TODO LIST
+  			</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+<ul class="navbar-nav ml-auto" >
+     <li class="nav-item ">
+<form  action="/home/" method="post">{% csrf_token %}      <button class="nav-link btn btn-black ">Your List</button></form>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link " href="/logoutuser">Logout</a>
+    </li>
+
+  </ul>
+</div>
+</div>
+</nav>
+</header>
+<!-- **********************************END OF NAVBAR *************************************************************** -->
+ {% block body %} {% endblock %}
+</body>
+</html>
